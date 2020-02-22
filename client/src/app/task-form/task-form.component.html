@@ -1,0 +1,121 @@
+<form [formGroup]="taskForm" (ngSubmit)="onSumbit()">
+  <section>
+    <h1>Dane podstawowe:</h1>
+    <label>
+      ID zadania:
+      <input type = "number" formControlName="id" [readOnly]="true">
+    </label>
+    <br>
+    <label>Nazwa zadania:
+      <input type = "text" formControlName="taskName">
+    </label>
+    <br>
+    <label>
+      Opis zadania:<br>
+      <textarea formControlName="taskDescription"></textarea>
+    </label>
+    <br>
+    <label>
+      Typ zadania:
+      <mat-form-field>
+          <input type="text" matInput formControlName = "taskType" [matAutocomplete]="autoType">
+          <mat-autocomplete #autoType = "matAutocomplete">
+            <mat-option *ngFor="let option of options" [value]="option">
+              {{option}}
+            </mat-option>
+          </mat-autocomplete>
+      </mat-form-field>
+    </label>
+    <br>
+    <label>
+      Tagi:
+      <tag-input formControlName="tags">
+        <tag-input-dropdown
+          [autocompleteItems]="tags"
+          [showDropdownIfEmpty]="true"
+          [dynamicUpdate]="false">
+        </tag-input-dropdown>
+      </tag-input>
+    </label>
+    <br>
+    <label>
+      Kategoria:
+      <mat-form-field>
+        <input type="text" matInput formControlName = "category" [matAutocomplete]="autoCategory">
+        <mat-autocomplete #autoCategory = "matAutocomplete">
+          <mat-option *ngFor="let option of categoryOptions" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </label>
+    <br>
+    <label>
+      Data utworzenia:
+      <input type="text" formControlName="createDate" readonly>
+    </label>
+    <br>
+    <label>
+      Utworzony przez:
+      <input type="text" formControlName="createBy" readonly>
+    </label>
+    <br>
+    <label>
+      Data ostatniej modyfikacji:
+      <input type="text" formControlName="modifyDate" readonly>
+    </label>
+    <br>
+    <label>
+      Zmodyfikowany przez:
+      <input type="text" formControlName="modifyBy" readonly>
+    </label>
+  </section>
+  <section>
+    <h1>Dane szczegółowe:</h1>
+    <label>
+      Termin realizacji od:
+      <mat-form-field>
+        <input matInput [matDatepicker]="deadlineFrom" formControlName="deadlineFrom">
+        <mat-datepicker-toggle matSuffix [for]="deadlineFrom"></mat-datepicker-toggle>
+        <mat-datepicker #deadlineFrom></mat-datepicker>
+      </mat-form-field>
+    </label>
+    <br>
+    <label>
+      Termin realizacji do:
+      <mat-form-field>
+        <input matInput [matDatepicker]="deadlineTo" formControlName="deadlineTo">
+        <mat-datepicker-toggle matSuffix [for]="deadlineTo"></mat-datepicker-toggle>
+        <mat-datepicker #deadlineTo></mat-datepicker>
+      </mat-form-field>
+    </label>
+    <br>
+    <label>
+      Priorytet zadania:
+      <select formControlName="priority">
+        <option *ngFor = "let priority of priorities" [value]="priority">{{priority}}</option>
+      </select>
+    </label>
+    <br>
+    <label>
+      Przewidywany czas realizacji zadania:
+      <input type="text" formControlName="expectedTime">
+    </label>
+    <br>
+    <label>
+      Niezbędne zasoby:<br>
+      <textarea formControlName="resources"></textarea>
+    </label>
+  </section>
+  <br>
+  <button type="submit" [disabled]="!taskForm.valid" (click)="updateTask()">Edytuj zadanie</button><br><br>
+  <button type="submit" [disabled]="!taskForm.valid" (click)="addTask()">Dodaj nowe zadanie</button><br><br>
+</form>
+<div>
+<label>
+  Podaj ID zadania do edycji:
+  <input type="number" [(ngModel)]="myId"><br><br>
+</label>
+  <button type="submit" (click)="getTaskById(myId)">Wyświetl zadanie o podanym ID</button><br><br>
+  <button type="submit" (click)="getTasks()">Wyświetl w konsoli wszystkie zadania z bazy</button><br><br>
+</div>

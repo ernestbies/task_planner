@@ -1,0 +1,88 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSumbit()">
+  <section>
+    <h1>Dane logowania:</h1>
+    <label>
+      Nazwa użytkownika
+      <input type = "text" formControlName="loginName">
+    </label>
+    <br>
+    <label>
+      Hasło
+      <input type = "password" formControlName="password">
+    </label>
+    <br>
+    <label>
+      Powtórz hasło
+      <input type = "password" formControlName="password2">
+    </label>
+  </section>
+  <section>
+    <h1>Dane użytkownika:</h1>
+    <label>
+      Imię
+      <input type = "text" formControlName="name">
+    </label>
+    <br>
+    <label>
+      Nazwisko
+      <input type = "text" formControlName="surname">
+    </label>
+    <br>
+    <label>
+      E-mail
+      <input type = "text" formControlName="email">
+    </label>
+    <br>
+    <label>
+      Data urodzenia<br>
+      Dzień <input type = "text" formControlName="day">
+      Miesiąc
+      <select formControlName="month">
+        <option value="1">styczeń</option>
+        <option value="2">luty</option>
+        <option value="3">marzec</option>
+        <option value="4">kwiecień</option>
+        <option value="5">maj</option>
+        <option value="6">czerwiec</option>
+        <option value="7">lipiec</option>
+        <option value="8">sierpień</option>
+        <option value="9">wrzesień</option>
+        <option value="10">październik</option>
+        <option value="11">listopad</option>
+        <option value="12">grudzień</option>
+      </select>
+      Rok <input type = "text" formControlName="year">
+    </label>
+    <br>
+    <label>
+      Adres
+      <input type = "text" formControlName="address">
+    </label>
+    <br>
+    <label>
+      Kod pocztowy
+      <input type = "text" formControlName="postcode">
+    </label>
+    <br>
+    <label>
+      Miasto
+      <input type = "text" formControlName="city">
+    </label>
+    <section>
+      <h1>Przetwarzanie danych osobowych:</h1>
+    <label>
+      Oświadczam, iż zapoznałem się z regulaminem.
+      <input type = "checkbox" formControlName="checkbox1">
+    </label>
+    <br>
+    <label>
+      Chcę otrzymywać informacje handlowe na podany adres e-mail.
+      <input type = "checkbox" formControlName="checkbox2">
+    </label>
+    </section>
+    <br>
+  </section>
+
+  <button type="submit" onClick="window.location.href=window.location.href" [disabled]="!registerForm.valid">Zarejestruj</button>
+</form>
+

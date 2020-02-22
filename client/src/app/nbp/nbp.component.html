@@ -1,0 +1,30 @@
+<div>
+  <br><br>
+  <label style="font-weight: bold">Wybierz tabelę NBP, z której mają być pobrane dane:</label><br><br>
+  <button (click)="getTable('A')">Tabela A</button>
+  <button (click)="getTable('B')">Tabela B</button>
+  <button (click)="getTable('C')">Tabela C</button>
+  <div>
+    <table *ngIf="nbpResponse !== undefined">
+      <tr>
+        <td>Table:</td><td>{{nbpResponse[0].table}}</td>
+      </tr>
+      <tr>
+        <td>No:</td><td>{{nbpResponse[0].no}}</td>
+      </tr>
+      <tr>
+        <td *ngIf="nbpResponse[0].tradingDate !== undefined">Trading Date:</td><td>{{nbpResponse[0].tradingDate}}</td>
+      </tr>
+      <tr>
+        <td>Effective Date:</td><td>{{nbpResponse[0].effectiveDate}}</td>
+      </tr>
+      <tr *ngFor="let rate of nbpResponse[0].rates">
+        <td>Currency:</td><td>{{rate.currency}}</td>
+        <td>Code:</td><td>{{rate.code}}</td>
+        <td *ngIf="rate.mid !== undefined">Mid:</td><td>{{rate.mid}}</td>
+        <td *ngIf="rate.bid !== undefined">Bid:</td><td>{{rate.bid}}</td>
+        <td *ngIf="rate.ask !== undefined">Ask:</td><td>{{rate.ask}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

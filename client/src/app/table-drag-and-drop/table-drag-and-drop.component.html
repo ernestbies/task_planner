@@ -1,0 +1,35 @@
+<div>
+  <br>
+  <label style="font-weight: bold">Table Drag and Drop</label>
+  <br>
+  <button (click)="showZadania()">Wyświetl listę zadań w konsoli</button>
+  <br>
+</div>
+
+<div class="example-container">
+  <h2>Do realizacji</h2>
+
+  <div
+    cdkDropList
+    [cdkDropListData]="zadaniaToDo"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)"
+    id="list-1"
+    cdkDropListConnectedTo="list-2">
+    <div class="example-box" *ngFor="let item of zadaniaToDo" cdkDrag>{{item.taskName}}</div>
+  </div>
+</div>
+
+<div class="example-container">
+  <h2>Zrealizowane</h2>
+
+  <div
+    cdkDropList
+    [cdkDropListData]="zadaniaDone"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)"
+    id="list-2"
+    cdkDropListConnectedTo="list-1">
+    <div class="example-box" *ngFor="let item of zadaniaDone" cdkDrag>{{item.taskName}}</div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+p {
+  font-family: Calibri;
+}
+
+button {
+  width: 200px;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+
+#login-input{
+  font-family: Calibri;
+  border-color: darkgrey;
+  box-shadow: 0 0 8px darkgrey;
+  padding: 4px;
+  width:250px;
+}
+
+#pass-input{
+  font-family: Calibri;
+  border-color: darkgrey;
+  box-shadow: 0 0 8px darkgrey;
+  padding: 4px;
+  width:250px;
+}

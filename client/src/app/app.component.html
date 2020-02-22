@@ -1,0 +1,25 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div align="center">
+  <h1>Ernest Bieś, PWSZ Tarnów 2020</h1>
+  <button [routerLink]="['login']">Logowanie</button><br><br>
+  <button [routerLink]="['register']">Formularz rejestracji</button><br><br>
+  <button (click)="redirect()">Formularz dodawania/edycji zadania</button><br><br>
+  <button [routerLink]="['tasks']">Tabela wszystkich zadań</button><br><br>
+  <button [routerLink]="['tasklist']">Lista zadań</button><br><br>
+  <button [routerLink]="['nbp']">Pobieranie danych z NBP o kursach walut</button><br><br>
+  <button mat-button [matMenuTriggerFor]="menu">Menu</button><br><br>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="redirect()">1. Dodaj zadanie</button>
+    <button mat-menu-item [routerLink]="['tasks']">2. Wszystkie zadania</button>
+    <button mat-menu-item [routerLink]="['author']">3. O autorze</button>
+  </mat-menu>
+  <button (click)="showSidenav()">Pokaż/Ukryj Sidenav</button><br><br>
+  <mat-sidenav-container class="my-container" *ngIf="shouldRun">
+    <mat-sidenav-content>
+      <button mat-menu-item (click)="redirect()">1. Dodaj zadanie</button>
+      <button mat-menu-item [routerLink]="['tasks']">2. Wszystkie zadania</button>
+      <button mat-menu-item [routerLink]="['author']">3. O autorze</button>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <router-outlet></router-outlet>
+</div>
